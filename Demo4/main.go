@@ -27,4 +27,19 @@ func main() {
 	default:
 		fmt.Printf("%T\n", i)
 	}
+
+	fmt.Println("-----------------------")
+	switch {
+	case false:
+		fmt.Println("1")
+		fallthrough
+	case true:
+		fmt.Println("2")
+		fallthrough
+	case false:
+		fmt.Println("3")
+		fallthrough
+	case true:
+		fmt.Println("4")
+	}
 }
