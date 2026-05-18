@@ -29,17 +29,37 @@ func main() {
 	}
 
 	fmt.Println("-----------------------")
-	switch {
-	case false:
-		fmt.Println("1")
-		fallthrough
-	case true:
-		fmt.Println("2")
-		fallthrough
-	case false:
-		fmt.Println("3")
-		fallthrough
-	case true:
-		fmt.Println("4")
+	//switch {
+	//case false:
+	//	fmt.Println("1")
+	//	fallthrough
+	//case true:
+	//	fmt.Println("2")
+	//	fallthrough
+	//case false:
+	//	fmt.Println("3")
+	//	fallthrough
+	//case true:
+	//	fmt.Println("4")
+	//}
+
+Loop:
+	for a < 20 {
+		if a == 15 {
+			a++
+			goto Loop
+		}
+		fmt.Println("a=", a)
+		a++
 	}
+
+Start:
+	b := 10
+	if b == 10 {
+		goto next
+	}
+	goto Start
+
+next:
+	fmt.Println("end")
 }
