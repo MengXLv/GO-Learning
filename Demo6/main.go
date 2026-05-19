@@ -15,7 +15,14 @@ func main() {
 	for i := 0; i < len(a); i++ {
 		iptr[i] = &a[i]
 	}
-	for i := 0; i < len(a); i++ {
+	for i := 0; i < len(a); i++ { //随机分配
 		fmt.Printf("%d\t%d\n", *iptr[i], iptr[i])
+	}
+
+	s := []string{"asasd", "a", "csdasd"}
+	var iptrs [3]*string
+	for i := 0; i < len(s); i++ {
+		iptrs[i] = &s[i]
+		fmt.Printf("%s\t%d\n", *iptrs[i], iptrs[i]) //16字节
 	}
 }
