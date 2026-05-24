@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 	"sync"
+	"time"
 )
 
 //	func say() {
@@ -46,6 +46,15 @@ func worker(id string, wg *sync.WaitGroup) {
 	defer wg.Done()
 	fmt.Println("worker " + id + " is started")
 	fmt.Println("worker " + id + " is done")
+}
+
+var done = make(chan bool)
+
+func see(a int) {
+	fmt.Println("开始")
+	time.Sleep(time.Duration(a) * time.Second)
+	fmt.Println("结束")
+	done <- true
 }
 
 func main() {
@@ -105,6 +114,4 @@ func main() {
 	case <-time.After(time.Second * 1): //监听超时
 		fmt.Println("timeout")
 	}
-	wg.Wait() //等待WaitGroup为空
-	fmt.Println("worker is all done")
 }
