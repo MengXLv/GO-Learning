@@ -89,10 +89,21 @@ func main() {
 	//}()
 	//fb(c, quit)
 
-	var wg sync.WaitGroup
-	for i := 0; i < 5; i++ {
-		wg.Add(1)
-		go worker("worker"+strconv.Itoa(i), &wg)
+	//var wg sync.WaitGroup
+	//for i := 0; i < 5; i++ {
+	//	wg.Add(1)
+	//	go worker("worker"+strconv.Itoa(i), &wg)
+	//}
+	//wg.Wait() //等待WaitGroup为空
+	//fmt.Println("worker is all done")
+
+	a := 2
+	go see(a)
+	select { //超时处理
+	case <-done:
+		fmt.Println("done")
+	case <-time.After(time.Second * 1): //监听超时
+		fmt.Println("timeout")
 	}
 	wg.Wait() //等待WaitGroup为空
 	fmt.Println("worker is all done")
