@@ -84,4 +84,5 @@ func main() {
 	fmt.Println(m.Values())
 	m.Set(2, "22")
 	fmt.Println(m.Values())
+	fmt.Println(m.Size())
 }
